@@ -4,30 +4,48 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import cz.damematiku.damematiku.R;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import cz.damematiku.damematiku.R;
+import cz.damematiku.damematiku.data.model.Section;
+
+public class MainActivity extends AppCompatActivity implements MainView {
+
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
+    @Bind(R.id.recyclerview)
+    RecyclerView sectionList;
+
+    private SectionAdapter sectionAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setUpSectionList();
+    }
+
+    private void setUpSectionList() {
+        sectionAdapter = new SectionAdapter(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        sectionList.setLayoutManager(layoutManager);
+        sectionList.setAdapter(sectionAdapter);
     }
 
     @Override
@@ -49,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showSections(List<Section> sections) {
+
     }
 }

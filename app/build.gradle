@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 23
@@ -11,6 +13,17 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    // retrolabda use
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,6 +41,9 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
 
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+
     // network
     compile 'com.squareup.retrofit2:retrofit:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.0.1'
@@ -35,12 +51,16 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'
 
+    compile 'com.google.dagger:dagger:2.0.1'
+    compile 'com.google.dagger:dagger-compiler:2.0.1'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.pwittchen:prefser:2.0.5'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
 
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
+    apt 'com.github.frankiesardo:auto-parcel-processor:0.3'
+    compile 'com.github.frankiesardo:auto-parcel:0.3'
 }
