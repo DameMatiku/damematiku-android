@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.youtube.player.YouTubeThumbnailView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,9 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         @Bind(R.id.title)
         TextView title;
+
+        @Bind(R.id.thumbnail)
+        YouTubeThumbnailView thumbnail;
 
         public VideoViewHolder(View view) {
             super(view);
@@ -50,6 +55,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Video video = data.get(position);
         VideoViewHolder videoHolder = (VideoViewHolder) holder;
         videoHolder.title.setText(video.title());
+        videoHolder.thumbnail.setTag(video.youtubeId());
         if (listener != null) {
             videoHolder.itemView.setOnClickListener(v -> listener.onVideoClick(video));
         }

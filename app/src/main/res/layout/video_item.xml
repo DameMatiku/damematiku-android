@@ -5,10 +5,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ImageView
-        android:background="#9e9e9e"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
+    <com.google.android.youtube.player.YouTubeThumbnailView
+        android:id="@+id/thumbnail"
+        android:layout_width="170dp"
+        android:layout_height="110dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"/>
 
     <TextView
         android:id="@+id/title"

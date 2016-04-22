@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.android.youtube.player.YouTubePlayer;
+
 import java.util.List;
 
 import butterknife.Bind;
@@ -22,7 +24,7 @@ import cz.damematiku.damematiku.data.model.Video;
 import cz.damematiku.damematiku.presentation.main.SectionAdapter;
 import cz.damematiku.damematiku.presentation.video.VideoActivity;
 
-public class ChapterActivity extends AppCompatActivity implements ChapterView, VideoAdapter.VideoClickListener {
+public class ChapterActivity extends AppCompatActivity implements ChapterView, VideoAdapter.VideoClickListener, YouTubePlayer.OnFullscreenListener {
 
     private static final String ARG_CHAPTER = "ARG_CHAPTER";
 
@@ -79,5 +81,10 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
     public void onVideoClick(Video video) {
         Intent intent = VideoActivity.create(this, video);
         startActivity(intent);
+    }
+
+    @Override
+    public void onFullscreen(boolean b) {
+
     }
 }
