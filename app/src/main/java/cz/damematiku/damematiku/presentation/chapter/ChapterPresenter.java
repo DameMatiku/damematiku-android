@@ -1,5 +1,6 @@
 package cz.damematiku.damematiku.presentation.chapter;
 
+import cz.damematiku.damematiku.data.MockMathService;
 import cz.damematiku.damematiku.data.model.Chapter;
 import cz.damematiku.damematiku.presentation.common.BasePresenter;
 
@@ -12,7 +13,15 @@ public class ChapterPresenter extends BasePresenter<ChapterView> {
 
     @Override
     public void start() {
+        // load detail chapter
+        MockMathService service = new MockMathService();
+        service.chapter(1).subscribe(chapterDetail -> {
+            chapter = chapterDetail;
+            mapToView(v -> v.showVideos(chapter.videos()));
+        }, Throwable::printStackTrace);
+
         mapToView(v -> v.setTitle(chapter));
+
     }
 
     public void setData(Chapter chapter) {

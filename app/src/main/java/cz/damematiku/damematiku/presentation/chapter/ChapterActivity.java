@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cz.damematiku.damematiku.R;
@@ -40,10 +42,10 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
         setContentView(R.layout.activity_chapter);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        setUpSectionList();
 
         presenter = new ChapterPresenter();
         presenter.setView(this);
-
         Chapter chapter = getIntent().getParcelableExtra(ARG_CHAPTER);
         presenter.setData(chapter);
         presenter.start();
@@ -52,6 +54,11 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
     @Override
     public void setTitle(Chapter chapter) {
         toolbar.setTitle(chapter.title());
+    }
+
+    @Override
+    public void showVideos(List<Video> videos) {
+        videoAdapter.setData(videos);
     }
 
     private void setUpSectionList() {

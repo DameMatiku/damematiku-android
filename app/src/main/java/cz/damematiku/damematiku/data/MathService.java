@@ -2,6 +2,7 @@ package cz.damematiku.damematiku.data;
 
 import java.util.List;
 
+import cz.damematiku.damematiku.data.model.Chapter;
 import cz.damematiku.damematiku.data.model.Section;
 import retrofit2.Response;
 import retrofit2.http.GET;
@@ -16,4 +17,8 @@ public interface MathService {
 
     @GET("chapters/{chapterId}")
     Observable<Response<List<Section>>> sections(@Path("chapterId") int chapterId);
+
+    @GET("chapters/{chapterId}")
+    Observable<Response<Chapter>> chapter(@Path("chapterId") int chapterId);
+
 }

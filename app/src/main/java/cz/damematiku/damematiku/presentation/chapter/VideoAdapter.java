@@ -12,8 +12,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cz.damematiku.damematiku.R;
-import cz.damematiku.damematiku.data.model.Chapter;
-import cz.damematiku.damematiku.data.model.Section;
 import cz.damematiku.damematiku.data.model.Video;
 
 /**
@@ -55,6 +53,11 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (listener != null) {
             videoHolder.itemView.setOnClickListener(v -> listener.onVideoClick(video));
         }
+    }
+
+    public void setData(List<Video> videos) {
+        data = videos;
+        notifyDataSetChanged();
     }
 
     public void setListener(VideoClickListener listener) {
