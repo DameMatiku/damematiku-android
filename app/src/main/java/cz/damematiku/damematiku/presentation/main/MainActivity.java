@@ -1,25 +1,25 @@
-package cz.damematiku.damematiku.presentation.home;
+package cz.damematiku.damematiku.presentation.main;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cz.damematiku.damematiku.R;
+import cz.damematiku.damematiku.data.model.Chapter;
 import cz.damematiku.damematiku.data.model.Section;
+import cz.damematiku.damematiku.presentation.chapter.ChapterActivity;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements MainView, SectionAdapter.ChapterClickListener {
 
 
     @Bind(R.id.toolbar)
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     RecyclerView sectionList;
 
     private SectionAdapter sectionAdapter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setUpSectionList();
+
+        presenter = new MainPresenter();
+        presenter.setView(this);
+        presenter.start();
     }
 
     private void setUpSectionList() {
-        sectionAdapter = new SectionAdapter(this);
+        sectionAdapter = new SectionAdapter();
+        sectionAdapter.setListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         sectionList.setLayoutManager(layoutManager);
         sectionList.setAdapter(sectionAdapter);
@@ -71,6 +77,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showSections(List<Section> sections) {
+        sectionAdapter.setData(sections);
+    }
 
+    @Override
+    public void onChapterClick(Chapter chapter) {
+        Intent intent = ChapterActivity.create(this, chapter);
+        startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package cz.damematiku.damematiku.presentation.home;
+package cz.damematiku.damematiku.presentation.main;
 
 import java.util.List;
 

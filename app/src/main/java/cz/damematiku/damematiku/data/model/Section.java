@@ -5,15 +5,18 @@ package cz.damematiku.damematiku.data.model;
  */
 import auto.parcel.AutoParcel;
 import android.os.Parcelable;
+import java.util.List;
 
 
-//@AutoGson
+@AutoGson
 @AutoParcel
 abstract public class Section implements Parcelable {
 
-    abstract public String text();
+    abstract public int id();
+    abstract public String title();
+    abstract public List<Chapter> chapters();
 
-    public static Section create(String text) {
-        return new AutoParcel_Section(text);
+    public static Section create(int id, String title, List<Chapter> chapters) {
+        return new AutoParcel_Section(id, title, chapters);
     }
 }

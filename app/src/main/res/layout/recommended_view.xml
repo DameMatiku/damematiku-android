@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?selectableItemBackground"
+    android:orientation="vertical"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="5"
+    tools:showIn="@layout/activity_main">
+
+    <ImageView
+        android:background="#9e9e9e"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/grid_0.5"
+        android:textColor="@color/text_color"
+        android:text="Zaokrouhlovani cisel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/grid_0.5"
+        android:textColor="@color/lighter_text_color"
+        android:text="Jana Zelenkova"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
