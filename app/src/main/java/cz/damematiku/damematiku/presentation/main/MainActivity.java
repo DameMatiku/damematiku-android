@@ -35,7 +35,6 @@ import cz.damematiku.damematiku.presentation.chapter.ChapterActivity;
 
 public class MainActivity extends AppCompatActivity implements MainView, SectionAdapter.ChapterClickListener {
 
-
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
