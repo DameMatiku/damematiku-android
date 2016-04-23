@@ -92,7 +92,12 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
 
         for (int i = 0; i < comment.getChildCount(); i++ ){
             ViewGroup commentLayout = (ViewGroup) comment.getChildAt(i);
-            
+            CircleImageView avatar = (CircleImageView) commentLayout.findViewById(R.id.avatar);
+            Glide.with(this)
+                    .load(video.author().avatarUrl())
+                    .centerCrop()
+                    .crossFade()
+                    .into(avatar);
         }
 
         presenter.setData(video);
