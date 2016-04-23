@@ -22,6 +22,7 @@ import cz.damematiku.damematiku.MathApplication;
 import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.model.Chapter;
 import cz.damematiku.damematiku.data.model.Section;
+import cz.damematiku.damematiku.data.model.Tag;
 import cz.damematiku.damematiku.depinject.component.DaggerActivityInjectorComponent;
 import cz.damematiku.damematiku.presentation.chapter.ChapterActivity;
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
                 .baseComponent(MathApplication.getBaseComponent())
                 .build()
                 .inject(this);
-        
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -94,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     @Override
     public void showSections(List<Section> sections) {
         sectionAdapter.setData(sections);
+    }
+
+    @Override
+    public void showTags(List<Tag> tags) {
+        
     }
 
     @Override

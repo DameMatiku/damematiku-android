@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import cz.damematiku.damematiku.data.MathService;
 import cz.damematiku.damematiku.data.MockMathService;
 import cz.damematiku.damematiku.data.model.Section;
+import cz.damematiku.damematiku.data.model.Tag;
 import cz.damematiku.damematiku.presentation.common.BasePresenter;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
@@ -31,12 +32,34 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     @Override
     public void start() {
+        Observable<Response<List<Tag>>> tagsObs = service.tags();
+
+        tagsObs
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleTags, Throwable::printStackTrace);
+
+
         Observable<Response<List<Section>>> sectionsObs = service.sections();
 
         sectionsObs
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleSections, Throwable::printStackTrace);
+    }
+
+    private void handleTags(Response<List<Tag>> listResponse) {
+        if (listResponse.isSuccessful()) {
+            List<Tag> tags = listResponse.body();
+            mapToView(v -> v.showTags(tags));
+        } else {
+            ResponseBody eb = listResponse.errorBody();
+            try {
+                Log.e("MainPresenter", eb.string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void handleSections(Response<List<Section>> listResponse) {
