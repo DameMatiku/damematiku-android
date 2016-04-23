@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
                 .baseComponent(MathApplication.getBaseComponent())
                 .build()
                 .inject(this);
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
