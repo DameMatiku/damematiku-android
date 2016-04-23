@@ -43,7 +43,7 @@
             <TextView
                 android:textColor="@color/colorAccent"
                 android:layout_margin="@dimen/grid_2"
-                android:text="JANA ZELINKOVA"
+                android:text="Marek Simon"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-medium"
                 android:layout_width="match_parent"
