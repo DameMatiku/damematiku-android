@@ -6,9 +6,6 @@ import cz.damematiku.damematiku.presentation.main.MainPresenter;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by semanticer on 23. 4. 2016.
- */
 @Module
 public class PresenterModule {
 
