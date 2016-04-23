@@ -188,8 +188,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     }
 
     @Override
-    public void onChapterClick(Chapter chapter) {
-        Intent intent = ChapterActivity.create(this, chapter);
+    public void onChapterClick(Chapter chapter, Section section, int chapterNum, int sectionNum) {
+        Intent intent = ChapterActivity.create(this, chapter, section, chapterNum, sectionNum);
         startActivity(intent);
     }
 

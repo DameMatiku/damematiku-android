@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="188dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -24,24 +24,18 @@
             app:titleEnabled="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                android:title=""
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:label="" />
 
             <LinearLayout
+                android:layout_marginTop="@dimen/grid_9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax"
                 android:orientation="vertical">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_9">
+                    >
 
                     <TextView
                         android:id="@+id/section_number"
@@ -84,6 +78,15 @@
                         android:text="Zaokrouhlování přirozených čísel" />
                 </FrameLayout>
             </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:title=""
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:label="" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

@@ -83,7 +83,8 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 title.setText(chapter.name());
                 number.setText(position + "." + (i+1));
                 if (listener != null) {
-                    viewGroup.setOnClickListener(v -> listener.onChapterClick(chapter));
+                    final int finalI = i;
+                    viewGroup.setOnClickListener(v -> listener.onChapterClick(chapter, section, position, finalI+1));
                 }
             } else {
                 viewGroup.setVisibility(View.GONE);
@@ -106,6 +107,6 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public interface ChapterClickListener {
-        void onChapterClick(Chapter chapter);
+        void onChapterClick(Chapter chapter, Section section, int sectionNum, int chapterNum);
     }
 }

@@ -25,6 +25,7 @@ import cz.damematiku.damematiku.MathApplication;
 import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.model.Author;
 import cz.damematiku.damematiku.data.model.Chapter;
+import cz.damematiku.damematiku.data.model.Section;
 import cz.damematiku.damematiku.data.model.Video;
 import cz.damematiku.damematiku.depinject.component.DaggerActivityInjectorComponent;
 import cz.damematiku.damematiku.presentation.main.SectionAdapter;
@@ -33,6 +34,9 @@ import cz.damematiku.damematiku.presentation.video.VideoActivity;
 public class ChapterActivity extends AppCompatActivity implements ChapterView, VideoAdapter.VideoClickListener {
 
     private static final String ARG_CHAPTER = "ARG_CHAPTER";
+    private static final String ARG_SECTION = "ARG_SECTION";
+    private static final String ARG_SECTION_NUMBER = "ARG_SECTION_NUMBER";
+    private static final String ARG_CHAPTER_NUMBER = "ARG_CHAPTER_NUMBER";
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -41,7 +45,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
     TextView chapterTitle;
 
     @Bind(R.id.chapter_number)
-    TextView chapterNuber;
+    TextView chapterNumber;
 
     @Bind(R.id.section_title)
     TextView sectionTitle;
@@ -77,6 +81,14 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
 
         presenter.setView(this);
         Chapter chapter = getIntent().getParcelableExtra(ARG_CHAPTER);
+        Section section = getIntent().getParcelableExtra(ARG_SECTION);
+        sectionTitle.setText(section.name());
+        int sectionNumberVal = getIntent().getIntExtra(ARG_CHAPTER_NUMBER, 1);
+        int chapterNumberVal = getIntent().getIntExtra(ARG_SECTION_NUMBER, 1);
+
+        chapterNumber.setText(chapterNumberVal+"");
+        sectionNumber.setText(sectionNumberVal+"");
+
         presenter.setData(chapter);
         presenter.start();
     }
@@ -88,7 +100,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
 
     @Override
     public void showVideos(String chapterDescription ,List<Video> videos) {
-        videos.add(0, Video.create(0, "", 22, "", chapterDescription, Author.create("","")));
+        videos.add(0, Video.create(0, "", 22, chapterDescription, "", Author.create("","")));
         videoAdapter.setData(videos);
     }
 
@@ -100,9 +112,12 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
         videoList.setAdapter(videoAdapter);
     }
 
-    public static Intent create(Context context, Chapter chapter) {
+    public static Intent create(Context context, Chapter chapter, Section section, int chapterNumber, int sectionNumber) {
         Intent intent = new Intent(context, ChapterActivity.class);
         intent.putExtra(ARG_CHAPTER, chapter);
+        intent.putExtra(ARG_SECTION, section);
+        intent.putExtra(ARG_CHAPTER_NUMBER, chapterNumber);
+        intent.putExtra(ARG_SECTION_NUMBER, sectionNumber);
         return intent;
     }
 
