@@ -33,6 +33,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/author_avatar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/grid_2" />
+
             <TextView
                 android:textColor="@color/colorAccent"
                 android:layout_margin="@dimen/grid_2"

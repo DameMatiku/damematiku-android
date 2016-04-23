@@ -11,9 +11,11 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
@@ -28,6 +30,7 @@ import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.DeveloperKey;
 import cz.damematiku.damematiku.data.model.Video;
 import cz.damematiku.damematiku.depinject.component.DaggerActivityInjectorComponent;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoActivity extends YouTubeFailureRecoveryActivity implements VideoView, AppCompatCallback {
 
@@ -42,8 +45,14 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
     @Bind(R.id.description)
     TextView description;
 
+    @Bind(R.id.author_avatar)
+    CircleImageView authorAvatar;
+
     @Bind(R.id.root)
     CoordinatorLayout coordinatorLayout;
+
+    @Bind(R.id.comments)
+    ViewGroup comment;
 
     private AppCompatDelegate delegate;
 
@@ -74,6 +83,17 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
         youTubePlayerFragment.initialize(DeveloperKey.DEVELOPER_KEY, this);
 
         Video video = getIntent().getParcelableExtra(ARG_VIDEO);
+
+        Glide.with(this)
+                .load(video.author().avatarUrl())
+                .centerCrop()
+                .crossFade()
+                .into(authorAvatar);
+
+        for (int i = 0; i < comment.getChildCount(); i++ ){
+            ViewGroup commentLayout = (ViewGroup) comment.getChildAt(i);
+            
+        }
 
         presenter.setData(video);
         presenter.setView(this);
@@ -117,7 +137,7 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
 
     @OnClick(R.id.upvote)
     public void upvote(ImageView view) {
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Palec nahoru!", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Super!", Snackbar.LENGTH_LONG);
         snackbar.show();
         String rep = reputation.getText().toString();
         int repCount = Integer.parseInt(rep);
@@ -129,7 +149,7 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
 
     @OnClick(R.id.downvote)
     public void downvote(ImageView view) {
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Palec dolu!", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Nic moc!", Snackbar.LENGTH_LONG);
         snackbar.show();
         String rep = reputation.getText().toString();
         int repCount = Integer.parseInt(rep);
