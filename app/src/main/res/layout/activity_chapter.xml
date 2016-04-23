@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:title=""
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 android:label="" />
 

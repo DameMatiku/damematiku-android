@@ -12,14 +12,10 @@ abstract public class Tag implements Parcelable {
 
     abstract public int id();
     abstract public String name();
-    abstract public List<Tag> tags();
+    abstract public List<Tag> subtags();
 
-    public static Tag create(int id, String name, List<Tag> tags) {
-        return new AutoParcel_Tag(id, name, tags);
+    public static Tag create(int id, String name, List<Tag> subtags) {
+        return new AutoParcel_Tag(id, name, subtags);
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

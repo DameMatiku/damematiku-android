@@ -43,7 +43,11 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter);
         ButterKnife.bind(this);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setUpSectionList();
 
         presenter = new ChapterPresenter();

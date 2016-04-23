@@ -82,13 +82,24 @@
 
     <Spinner
         android:id="@+id/tag_spinner"
+        android:layout_marginLeft="@dimen/grid_2"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/grid_7" />
+
+    <View
+        android:background="@color/divider"
+        android:layout_marginLeft="@dimen/grid_2"
+        android:layout_marginRight="@dimen/grid_2"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
 
     <Spinner
         android:id="@+id/subtag_spinner"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/grid_2"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/grid_7" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "BASE_URL", "\"http://damematiku.cz/api/v1/subjects/1/\""
+        buildConfigField "String", "BASE_URL", "\"http://damematiku.cz/api/v1/\""
 
     }
 

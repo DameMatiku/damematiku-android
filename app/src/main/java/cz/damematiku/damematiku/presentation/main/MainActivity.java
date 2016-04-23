@@ -8,14 +8,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -109,12 +113,78 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     @Override
     public void showTags(List<Tag> tags) {
 
+        List<String> tagTitle = new ArrayList<>();
+        tagTitle.add("Všechno");
+        for (Tag t : tags) {
+            tagTitle.add(t.name());
+        }
+
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_item, tags);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_item, tagTitle);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         tagSpinner.setAdapter(adapter);
+
+        tagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    presenter.tagSelected(tags.get(position - 1));
+                } else {
+                    subTagSpinner.setVisibility(View.GONE);
+                    presenter.tagSelected(null);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void showSubTag(List<Tag> subTags) {
+
+
+        List<String> tagTitle = new ArrayList<>();
+        tagTitle.add("Všechno");
+        for (Tag t : subTags) {
+            tagTitle.add(t.name());
+        }
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_item, tagTitle);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        subTagSpinner.setAdapter(adapter);
+
+        subTagSpinner.setVisibility(View.VISIBLE);
+
+        subTagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    presenter.subTagSelected(subTags.get(position - 1));
+                } else {
+                    presenter.subTagSelected(null);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    @Override
+    public void hideSubTags() {
+        subTagSpinner.setVisibility(View.GONE);
     }
 
     @Override
@@ -122,4 +192,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
         Intent intent = ChapterActivity.create(this, chapter);
         startActivity(intent);
     }
+
+
 }

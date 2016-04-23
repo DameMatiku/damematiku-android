@@ -13,4 +13,8 @@ public interface MainView extends BaseView {
     void showSections(List<Section> sections);
 
     void showTags(List<Tag> tags);
+
+    void showSubTag(List<Tag> subTags);
+
+    void hideSubTags();
 }
