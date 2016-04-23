@@ -4,6 +4,7 @@ import cz.damematiku.damematiku.depinject.module.PresenterModule;
 import cz.damematiku.damematiku.depinject.scope.ActivityScope;
 import cz.damematiku.damematiku.presentation.main.MainActivity;
 
+import cz.damematiku.damematiku.presentation.video.VideoActivity;
 import dagger.Component;
 
 
@@ -12,4 +13,5 @@ import dagger.Component;
 public interface ActivityInjectorComponent {
     void inject(MainActivity activity);
 
+    void inject(VideoActivity videoActivity);
 }

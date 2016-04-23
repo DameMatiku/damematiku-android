@@ -1,5 +1,8 @@
 package cz.damematiku.damematiku.presentation.video;
 
+import javax.inject.Inject;
+
+import cz.damematiku.damematiku.data.MathService;
 import cz.damematiku.damematiku.data.model.Video;
 import cz.damematiku.damematiku.presentation.common.BasePresenter;
 
@@ -9,6 +12,12 @@ import cz.damematiku.damematiku.presentation.common.BasePresenter;
 public class VideoPresenter extends BasePresenter<VideoView> {
 
     private Video video;
+    private MathService mathService;
+
+    @Inject
+    public VideoPresenter(MathService mathService){
+        this.mathService = mathService;
+    }
 
     @Override
     public void start() {

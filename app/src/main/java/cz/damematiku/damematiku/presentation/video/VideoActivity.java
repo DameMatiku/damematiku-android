@@ -10,13 +10,18 @@ import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 
 import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cz.damematiku.damematiku.MathApplication;
 import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.DeveloperKey;
 import cz.damematiku.damematiku.data.model.Video;
+import cz.damematiku.damematiku.depinject.component.DaggerActivityInjectorComponent;
 
 public class VideoActivity extends YouTubeFailureRecoveryActivity implements VideoView, AppCompatCallback {
 
@@ -25,33 +30,34 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-//    @Bind(R.id.youtube_view)
-    YouTubePlayerView youTubePlayerView;
-
-    VideoPresenter presenter;
     private AppCompatDelegate delegate;
+
+    @Inject
+    VideoPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
-        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-        youTubePlayerView.initialize(DeveloperKey.DEVELOPER_KEY, this);
+
+        DaggerActivityInjectorComponent.builder()
+                .baseComponent(MathApplication.getBaseComponent())
+                .build()
+                .inject(this);
 
         delegate = AppCompatDelegate.create(this, this);
         delegate.onCreate(savedInstanceState);
         delegate.setContentView(R.layout.activity_video);
-
+        ButterKnife.bind(this);
 
         delegate.setSupportActionBar(toolbar);
+        delegate.getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        YouTubePlayerFragment youTubePlayerFragment =
+                (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
+        youTubePlayerFragment.initialize(DeveloperKey.DEVELOPER_KEY, this);
 
-//        setSupportActionBar(toolbar);
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         Video video = getIntent().getParcelableExtra(ARG_VIDEO);
 
-        presenter = new VideoPresenter();
         presenter.setData(video);
         presenter.setView(this);
         presenter.start();
@@ -82,7 +88,7 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
 
     @Override
     protected YouTubePlayer.Provider getYouTubePlayerProvider() {
-        return youTubePlayerView;
+        return (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
     }
 
     public static Intent create(Context context, Video video) {
