@@ -45,31 +45,33 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:text="Doporučené"
-        style="@style/SubTitle"/>
+    <!--<TextView-->
+        <!--android:text="Doporučené"-->
+        <!--android:fontFamily="sans-serif-medium"-->
+        <!--style="@style/SubTitle"/>-->
 
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/grid_1"
-        android:paddingLeft="@dimen/grid_2"
-        android:paddingRight="@dimen/grid_2"
-        android:layout_height="wrap_content">
+    <!--<LinearLayout-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginBottom="@dimen/grid_1"-->
+        <!--android:paddingLeft="@dimen/grid_2"-->
+        <!--android:paddingRight="@dimen/grid_2"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <include layout="@layout/recommended_view"/>
+        <!--<include layout="@layout/recommended_view"/>-->
 
-        <android.support.v4.widget.Space
-            android:layout_width="@dimen/grid_2"
-            android:layout_height="wrap_content"/>
+        <!--<android.support.v4.widget.Space-->
+            <!--android:layout_width="@dimen/grid_2"-->
+            <!--android:layout_height="wrap_content"/>-->
 
-        <include layout="@layout/recommended_view"/>
+        <!--<include layout="@layout/recommended_view"/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <TextView
         android:text="Kapitoly"
+        android:fontFamily="sans-serif-medium"
         style="@style/SubTitle"/>
 
     <android.support.v7.widget.RecyclerView

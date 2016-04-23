@@ -12,11 +12,15 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cz.damematiku.damematiku.MathApplication;
 import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.model.Chapter;
 import cz.damematiku.damematiku.data.model.Section;
+import cz.damematiku.damematiku.depinject.component.DaggerActivityInjectorComponent;
 import cz.damematiku.damematiku.presentation.chapter.ChapterActivity;
 
 public class MainActivity extends AppCompatActivity implements MainView, SectionAdapter.ChapterClickListener {
@@ -29,21 +33,28 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     RecyclerView sectionList;
 
     private SectionAdapter sectionAdapter;
-    private MainPresenter presenter;
+
+    @Inject
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        DaggerActivityInjectorComponent.builder()
+                .baseComponent(MathApplication.getBaseComponent())
+                .build()
+                .inject(this);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setUpSectionList();
-
-        presenter = new MainPresenter();
         presenter.setView(this);
         presenter.start();
+
     }
 
     private void setUpSectionList() {

@@ -58,7 +58,7 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Section section = data.get(position);
         SectionViewHolder sectionHolder = (SectionViewHolder) holder;
-        sectionHolder.title.setText(section.title());
+        sectionHolder.title.setText(section.name());
         sectionHolder.number.setText((position+1)+"");
         bindChapters(position+1, section, sectionHolder);
 
@@ -80,7 +80,7 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 viewGroup.setVisibility(View.VISIBLE);
                 TextView title = ButterKnife.findById(viewGroup, R.id.chapter_title);
                 TextView number = ButterKnife.findById(viewGroup, R.id.chapter_number);
-                title.setText(chapter.title());
+                title.setText(chapter.name());
                 number.setText(position + "." + (i+1));
                 if (listener != null) {
                     viewGroup.setOnClickListener(v -> listener.onChapterClick(chapter));

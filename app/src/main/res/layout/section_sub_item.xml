@@ -5,11 +5,12 @@
     android:background="?selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="@dimen/grid_8"
+    android:paddingRight="@dimen/grid_1"
     tools:showIn="@layout/section_item">
 
     <TextView
         android:id="@+id/chapter_number"
-        android:textSize="19dp"
+        android:textSize="17dp"
         android:layout_marginLeft="@dimen/grid_2"
         android:layout_gravity="center_vertical"
         tools:text="1"
@@ -18,8 +19,8 @@
 
     <TextView
         android:id="@+id/chapter_title"
-        android:textSize="19dp"
-        android:layout_marginLeft="@dimen/grid_6"
+        android:textSize="17dp"
+        android:layout_marginLeft="@dimen/grid_7"
         android:layout_gravity="center_vertical"
         tools:text="Nazev sekce"
         android:layout_width="wrap_content"

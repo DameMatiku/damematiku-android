@@ -55,7 +55,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
 
     @Override
     public void setTitle(Chapter chapter) {
-        toolbar.setTitle(chapter.title());
+        toolbar.setTitle(chapter.name());
     }
 
     @Override

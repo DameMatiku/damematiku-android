@@ -11,11 +11,11 @@ import java.util.List;
 abstract public class Chapter implements Parcelable {
 
     abstract public int id();
-    abstract public String title();
+    abstract public String name();
     abstract public @Nullable String description();
     abstract public @Nullable List<Video> videos();
 
-    public static Chapter create(int id, String title, @Nullable String description, @Nullable List<Video> videos) {
-        return new AutoParcel_Chapter(id, title, description, videos);
+    public static Chapter create(int id, String name, @Nullable String description, @Nullable List<Video> videos) {
+        return new AutoParcel_Chapter(id, name, description, videos);
     }
 }

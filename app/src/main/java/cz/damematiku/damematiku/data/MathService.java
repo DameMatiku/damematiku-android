@@ -15,8 +15,8 @@ import rx.Observable;
  */
 public interface MathService {
 
-    @GET("chapters/{chapterId}")
-    Observable<Response<List<Section>>> sections(@Path("chapterId") int chapterId);
+    @GET("sections")
+    Observable<Response<List<Section>>> sections();
 
     @GET("chapters/{chapterId}")
     Observable<Response<Chapter>> chapter(@Path("chapterId") int chapterId);
