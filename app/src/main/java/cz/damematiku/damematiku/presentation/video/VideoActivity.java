@@ -4,10 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
@@ -17,6 +22,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cz.damematiku.damematiku.MathApplication;
 import cz.damematiku.damematiku.R;
 import cz.damematiku.damematiku.data.DeveloperKey;
@@ -29,6 +35,12 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    @Bind(R.id.reputation)
+    TextView reputation;
+
+    @Bind(R.id.root)
+    CoordinatorLayout coordinatorLayout;
 
     private AppCompatDelegate delegate;
 
@@ -95,5 +107,29 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
         Intent intent = new Intent(context, VideoActivity.class);
         intent.putExtra(ARG_VIDEO, video);
         return intent;
+    }
+
+    @OnClick(R.id.upvote)
+    public void upvote(ImageView view) {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Palec nahoru!", Snackbar.LENGTH_LONG);
+        snackbar.show();
+        String rep = reputation.getText().toString();
+        int repCount = Integer.parseInt(rep);
+        repCount++;
+        view.setImageDrawable(getDrawable(R.drawable.ic_upvote_24dp_selected));
+        reputation.setText(repCount+"");
+        presenter.upvote();
+    }
+
+    @OnClick(R.id.downvote)
+    public void downvote(ImageView view) {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Palec dolu!", Snackbar.LENGTH_LONG);
+        snackbar.show();
+        String rep = reputation.getText().toString();
+        int repCount = Integer.parseInt(rep);
+        repCount--;
+        view.setImageDrawable(getDrawable(R.drawable.ic_downvote_24dp_selected));
+        reputation.setText(repCount+"");
+        presenter.downvote();
     }
 }

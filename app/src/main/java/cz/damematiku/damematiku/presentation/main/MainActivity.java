@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
     @Bind(R.id.recyclerview)
     RecyclerView sectionList;
 
+    @Bind(R.id.search)
+    EditText search;
+
     private SectionAdapter sectionAdapter;
 
     @Inject
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
                 .build()
                 .inject(this);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

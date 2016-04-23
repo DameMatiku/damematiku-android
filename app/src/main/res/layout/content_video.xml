@@ -43,14 +43,18 @@
 
 
             <ImageView
+                android:id="@+id/downvote"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_downvote_24dp"
                 android:layout_gravity="center_vertical"
-                android:background="@color/colorAccent"
+                android:padding="@dimen/grid_1"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 tools:showIn="@layout/content_video"/>
 
 
             <TextView
+                android:id="@+id/reputation"
                 android:textStyle=""
                 android:text="489"
                 android:fontFamily="sans-serif-medium"
@@ -62,10 +66,12 @@
 
 
 
-
             <ImageView
+                android:id="@+id/upvote"
+                android:background="?selectableItemBackgroundBorderless"
                 android:layout_gravity="center_vertical"
-                android:background="@color/colorAccent"
+                android:src="@drawable/ic_upvote_24dp"
+                android:padding="@dimen/grid_1"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginRight="@dimen/grid_2"

@@ -27,4 +27,12 @@ public class VideoPresenter extends BasePresenter<VideoView> {
     public void setData(Video video) {
         this.video = video;
     }
+
+    public void upvote() {
+
+    }
+
+    public void downvote() {
+
+    }
 }
