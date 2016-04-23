@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,6 +31,9 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         @Bind(R.id.number)
         TextView number;
+
+        @Bind(R.id.dropdown_icon)
+        ImageView dropdownIcon;
 
         @Bind(R.id.top_layout)
         ViewGroup topLayout;
@@ -65,8 +69,10 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         sectionHolder.topLayout.setOnClickListener(v -> {
             if (sectionHolder.chapters.getVisibility() == View.GONE) {
                 sectionHolder.chapters.setVisibility(View.VISIBLE);
+                sectionHolder.dropdownIcon.animate().rotationBy(180).start();
             } else {
                 sectionHolder.chapters.setVisibility(View.GONE);
+                sectionHolder.dropdownIcon.animate().rotationBy(180).start();
             }
         });
     }
