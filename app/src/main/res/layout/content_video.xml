@@ -21,9 +21,10 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/description"
             android:textColor="@color/text_color"
             android:layout_margin="@dimen/grid_2"
-            android:text="Zaokrouhovani prirozenych cisel"
+            android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

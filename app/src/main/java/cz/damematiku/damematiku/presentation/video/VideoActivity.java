@@ -39,6 +39,9 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
     @Bind(R.id.reputation)
     TextView reputation;
 
+    @Bind(R.id.description)
+    TextView description;
+
     @Bind(R.id.root)
     CoordinatorLayout coordinatorLayout;
 
@@ -62,7 +65,9 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
         ButterKnife.bind(this);
 
         delegate.setSupportActionBar(toolbar);
-        delegate.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        delegate.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        delegate.getSupportActionBar().setHomeButtonEnabled(true);
+        delegate.getSupportActionBar().setTitle("");
 
         YouTubePlayerFragment youTubePlayerFragment =
                 (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
@@ -94,7 +99,8 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("wKJ9KzGQq0w");
+//            player.cueVideo("wKJ9KzGQq0w");
+            player.cueVideo(presenter.getViewId());
         }
     }
 
@@ -131,5 +137,11 @@ public class VideoActivity extends YouTubeFailureRecoveryActivity implements Vid
         view.setImageDrawable(getDrawable(R.drawable.ic_downvote_24dp_selected));
         reputation.setText(repCount+"");
         presenter.downvote();
+    }
+
+    @Override
+    public void showVideo(Video video) {
+        reputation.setText(video.votes()+"");
+        description.setText(video.description());
     }
 }

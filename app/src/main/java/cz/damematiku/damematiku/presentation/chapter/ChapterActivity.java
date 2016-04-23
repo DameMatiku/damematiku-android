@@ -100,7 +100,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
 
     @Override
     public void showVideos(String chapterDescription ,List<Video> videos) {
-        videos.add(0, Video.create(0, "", 22, chapterDescription, "", Author.create("","")));
+        videos.add(0, Video.create(0, 22, chapterDescription, "", Author.create("","")));
         videoAdapter.setData(videos);
     }
 
