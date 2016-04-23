@@ -17,7 +17,7 @@ public class ChapterPresenter extends BasePresenter<ChapterView> {
         MockMathService service = new MockMathService();
         service.chapter(1).subscribe(chapterDetail -> {
             chapter = chapterDetail;
-            mapToView(v -> v.showVideos(chapter.videos()));
+            mapToView(v -> v.showVideos(chapter.description(), chapter.videos()));
         }, Throwable::printStackTrace);
 
         mapToView(v -> v.setTitle(chapter));

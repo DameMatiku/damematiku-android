@@ -27,4 +27,11 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:layout_marginLeft">@dimen/grid_6</item>
+        <item name="android:background">@color/divider</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+
 </resources>

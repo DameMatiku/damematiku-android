@@ -30,6 +30,7 @@
 
             <TextView
                 android:id="@+id/number"
+                android:textColor="@color/colorAccent"
                 android:textSize="19dp"
                 android:layout_marginLeft="@dimen/grid_2"
                 android:layout_gravity="center_vertical"
@@ -39,6 +40,7 @@
 
             <TextView
                 android:id="@+id/title"
+                android:textColor="@color/colorAccent"
                 android:textSize="19dp"
                 android:layout_marginLeft="@dimen/grid_6"
                 android:layout_gravity="center_vertical"
@@ -56,23 +58,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
+
             <include layout="@layout/section_sub_item"/>
+
             <include layout="@layout/section_sub_item"/>
+
             <include layout="@layout/section_sub_item"/>
+
             <include layout="@layout/section_sub_item"/>
 
             <!-- include chapters programmatically via section_sub_item -->

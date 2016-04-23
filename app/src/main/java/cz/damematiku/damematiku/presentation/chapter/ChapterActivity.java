@@ -24,7 +24,7 @@ import cz.damematiku.damematiku.data.model.Video;
 import cz.damematiku.damematiku.presentation.main.SectionAdapter;
 import cz.damematiku.damematiku.presentation.video.VideoActivity;
 
-public class ChapterActivity extends AppCompatActivity implements ChapterView, VideoAdapter.VideoClickListener, YouTubePlayer.OnFullscreenListener {
+public class ChapterActivity extends AppCompatActivity implements ChapterView, VideoAdapter.VideoClickListener {
 
     private static final String ARG_CHAPTER = "ARG_CHAPTER";
 
@@ -59,12 +59,13 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
     }
 
     @Override
-    public void showVideos(List<Video> videos) {
+    public void showVideos(String chapterDescription ,List<Video> videos) {
+        videos.add(0, Video.create(0, "", chapterDescription, ""));
         videoAdapter.setData(videos);
     }
 
     private void setUpSectionList() {
-        videoAdapter = new VideoAdapter();
+        videoAdapter = new VideoAdapter(this);
         videoAdapter.setListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         videoList.setLayoutManager(layoutManager);
@@ -83,8 +84,4 @@ public class ChapterActivity extends AppCompatActivity implements ChapterView, V
         startActivity(intent);
     }
 
-    @Override
-    public void onFullscreen(boolean b) {
-
-    }
 }

@@ -73,6 +73,7 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void bindChapters(int position, Section section, SectionViewHolder sectionHolder) {
         for (int i = 0; i < sectionHolder.chapters.getChildCount(); i++) {
+
             ViewGroup viewGroup = (ViewGroup) sectionHolder.chapters.getChildAt(i);
             if (i < section.chapters().size()) {
                 Chapter chapter = section.chapters().get(i);
@@ -87,7 +88,6 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             } else {
                 viewGroup.setVisibility(View.GONE);
             }
-
         }
     }
 

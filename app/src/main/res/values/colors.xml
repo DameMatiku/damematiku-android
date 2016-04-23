@@ -7,4 +7,5 @@
     <color name="text_color">#232323</color>
     <color name="lighter_text_color">#6b6b6b</color>
     <color name="background">#FAFAFA</color>
+    <color name="divider">#a39d9d</color>
 </resources>

@@ -28,11 +28,11 @@ public class MockMathService {
 
     public Observable<Chapter> chapter(@Path("chapterId") int chapterId) {
         List<Video> videos = new ArrayList<>();
-        videos.add(Video.create(1, "Video 1", "wKJ9KzGQq0w"));
-        videos.add(Video.create(2, "Video 2", "wKJ9KzGQq0w"));
-        videos.add(Video.create(3, "Video 3", "wKJ9KzGQq0w"));
-        videos.add(Video.create(4, "Video 4", "wKJ9KzGQq0w"));
-        videos.add(Video.create(5, "Video 5", "wKJ9KzGQq0w"));
+        videos.add(Video.create(1, "Video 1", "description", "wKJ9KzGQq0w"));
+        videos.add(Video.create(2, "Video 2", "description moje", "wKJ9KzGQq0w"));
+        videos.add(Video.create(3, "Video 3", "description moje 2", "wKJ9KzGQq0w"));
+        videos.add(Video.create(4, "Video 4", "description moje 3", "wKJ9KzGQq0w"));
+        videos.add(Video.create(5, "Video 5", "description moje 4", "wKJ9KzGQq0w"));
         Chapter chapter = Chapter.create(1, "Test Chapter", "Text description", videos);
         return Observable.just(chapter);
     }

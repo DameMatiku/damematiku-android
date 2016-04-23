@@ -11,5 +11,5 @@ import cz.damematiku.damematiku.presentation.common.BaseView;
  */
 public interface ChapterView extends BaseView {
     void setTitle(Chapter chapter);
-    void showVideos(List<Video> videos);
+    void showVideos(String chapterDescription ,List<Video> videos);
 }

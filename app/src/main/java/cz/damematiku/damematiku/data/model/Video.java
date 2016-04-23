@@ -13,9 +13,10 @@ abstract public class Video implements Parcelable {
 
     abstract public int id();
     abstract public String title();
+    abstract public String description();
     abstract public String youtubeId();
 
-    public static Video create(int id, String title, String youtubeId) {
-        return new AutoParcel_Video(id, title, youtubeId);
+    public static Video create(int id, String title, String description, String youtubeId) {
+        return new AutoParcel_Video(id, title, description, youtubeId);
     }
 }
