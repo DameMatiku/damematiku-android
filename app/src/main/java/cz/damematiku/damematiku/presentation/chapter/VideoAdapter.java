@@ -94,7 +94,8 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             headerViewHolder.description.setText(video.description());
         } else {
             VideoViewHolder videoHolder = (VideoViewHolder) holder;
-            videoHolder.author.setText(video.title());
+            videoHolder.author.setText(video.author().name());
+            videoHolder.reputation.setText(video.votes()+"");
             videoHolder.description.setText(video.description());
 
             Glide

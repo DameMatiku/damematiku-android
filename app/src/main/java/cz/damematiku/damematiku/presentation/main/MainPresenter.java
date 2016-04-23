@@ -12,7 +12,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import cz.damematiku.damematiku.data.MathService;
-import cz.damematiku.damematiku.data.MockMathService;
 import cz.damematiku.damematiku.data.model.Section;
 import cz.damematiku.damematiku.data.model.Tag;
 import cz.damematiku.damematiku.presentation.common.BasePresenter;
