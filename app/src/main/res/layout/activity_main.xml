@@ -80,6 +80,16 @@
         android:fontFamily="sans-serif-medium"
         style="@style/SubTitle"/>
 
+    <Spinner
+        android:id="@+id/tag_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/subtag_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_marginTop="@dimen/grid_1"

@@ -17,4 +17,9 @@ abstract public class Tag implements Parcelable {
     public static Tag create(int id, String name, List<Tag> tags) {
         return new AutoParcel_Tag(id, name, tags);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

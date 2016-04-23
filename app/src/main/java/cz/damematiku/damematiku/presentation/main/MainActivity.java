@@ -9,9 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
 
     @Bind(R.id.search)
     EditText search;
+
+    @Bind(R.id.tag_spinner)
+    Spinner tagSpinner;
+
+    @Bind(R.id.subtag_spinner)
+    Spinner subTagSpinner;
 
     private SectionAdapter sectionAdapter;
 
@@ -99,7 +108,13 @@ public class MainActivity extends AppCompatActivity implements MainView, Section
 
     @Override
     public void showTags(List<Tag> tags) {
-        
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_item, tags);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        tagSpinner.setAdapter(adapter);
     }
 
     @Override
